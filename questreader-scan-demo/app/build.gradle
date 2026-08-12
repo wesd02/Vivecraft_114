@@ -10,8 +10,8 @@ android {
         applicationId 'com.questhub.questreader.scandemo'
         minSdk 29
         targetSdk 35
-        versionCode 2
-        versionName '0.2-demo'
+        versionCode 3
+        versionName '0.3-demo'
     }
 
     compileOptions {
