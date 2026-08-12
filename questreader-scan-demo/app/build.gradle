@@ -1,0 +1,31 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.questhub.questreader.scandemo'
+    compileSdk 35
+
+    defaultConfig {
+        applicationId 'com.questhub.questreader.scandemo'
+        minSdk 29
+        targetSdk 35
+        versionCode 1
+        versionName '0.1-demo'
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    packaging {
+        resources {
+            excludes += ['META-INF/DEPENDENCIES', 'META-INF/LICENSE*', 'META-INF/NOTICE*']
+        }
+    }
+}
+
+dependencies {
+    implementation 'com.google.mlkit:text-recognition:16.0.1'
+}
