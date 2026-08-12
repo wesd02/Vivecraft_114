@@ -28,7 +28,7 @@ import java.util.function.Consumer;
  * diagnostics ingest. QuestHub/QuestLink owns the Google Drive write.
  */
 public final class DiagnosticUploader {
-    private static final String DEFAULT_PAIR_URL = "http://raspberrypi.local:8789";
+    private static final String DEFAULT_PAIR_URL = "http://raspberrypi.local:8792";
     private static final int CONNECT_TIMEOUT_MS = 5000;
     private static final int READ_TIMEOUT_MS = 90000;
 
@@ -149,7 +149,7 @@ public final class DiagnosticUploader {
         JSONObject body = new JSONObject();
         body.put("device_id", deviceId);
         body.put("device_name", "QuestReader Scan Demo on " + Build.MODEL);
-        JSONObject response = jsonRequest("POST", DEFAULT_PAIR_URL + "/v1/mobile/pair", body, false);
+        JSONObject response = jsonRequest("POST", DEFAULT_PAIR_URL + "/pair", body, false);
         token = response.optString("token", "");
         controlUrl = response.optString("control_url", DEFAULT_PAIR_URL).replaceAll("/+$", "");
         if (token.isEmpty()) throw new IllegalStateException("QuestHub pairing returned no device token");
