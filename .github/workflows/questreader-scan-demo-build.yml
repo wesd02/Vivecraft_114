@@ -37,24 +37,24 @@ jobs:
       - name: Stage APK
         run: |
           mkdir -p questreader-demo-output
-          rm -f questreader-demo-output/QuestReader-Scan-Demo-v0.1.apk questreader-demo-output/QuestReader-Scan-Demo-v0.1.sha256
-          cp questreader-scan-demo/app/build/outputs/apk/debug/app-debug.apk questreader-demo-output/QuestReader-Scan-Demo-v0.2.apk
-          sha256sum questreader-demo-output/QuestReader-Scan-Demo-v0.2.apk | tee questreader-demo-output/QuestReader-Scan-Demo-v0.2.sha256
+          rm -f questreader-demo-output/QuestReader-Scan-Demo-v0.1.* questreader-demo-output/QuestReader-Scan-Demo-v0.2.*
+          cp questreader-scan-demo/app/build/outputs/apk/debug/app-debug.apk questreader-demo-output/QuestReader-Scan-Demo-v0.3.apk
+          sha256sum questreader-demo-output/QuestReader-Scan-Demo-v0.3.apk | tee questreader-demo-output/QuestReader-Scan-Demo-v0.3.sha256
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: QuestReader-Scan-Demo-v0.2
-          path: questreader-demo-output/QuestReader-Scan-Demo-v0.2.*
+          name: QuestReader-Scan-Demo-v0.3
+          path: questreader-demo-output/QuestReader-Scan-Demo-v0.3.*
           retention-days: 14
 
       - name: Commit APK to build branch
         run: |
           git config user.name "QuestReader Build Bot"
           git config user.email "questreader-build@users.noreply.github.com"
-          git add -f questreader-demo-output/QuestReader-Scan-Demo-v0.2.apk questreader-demo-output/QuestReader-Scan-Demo-v0.2.sha256
-          git rm -f --ignore-unmatch questreader-demo-output/QuestReader-Scan-Demo-v0.1.apk questreader-demo-output/QuestReader-Scan-Demo-v0.1.sha256
+          git add -f questreader-demo-output/QuestReader-Scan-Demo-v0.3.apk questreader-demo-output/QuestReader-Scan-Demo-v0.3.sha256
+          git rm -f --ignore-unmatch questreader-demo-output/QuestReader-Scan-Demo-v0.1.apk questreader-demo-output/QuestReader-Scan-Demo-v0.1.sha256 questreader-demo-output/QuestReader-Scan-Demo-v0.2.apk questreader-demo-output/QuestReader-Scan-Demo-v0.2.sha256
           if ! git diff --cached --quiet; then
-            git commit -m "Build QuestReader Scan Demo v0.2 [skip ci]"
+            git commit -m "Build QuestReader Scan Demo v0.3 [skip ci]"
             git push origin HEAD:questreader-scan-demo-build
           fi
