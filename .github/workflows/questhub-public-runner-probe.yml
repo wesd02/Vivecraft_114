@@ -1,0 +1,15 @@
+name: QuestHub public runner probe
+
+on:
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Probe runner
+        run: |
+          echo "QUESTHUB_PUBLIC_RUNNER_OK"
+          java -version
+          uname -a
