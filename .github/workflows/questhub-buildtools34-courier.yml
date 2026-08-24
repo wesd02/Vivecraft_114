@@ -1,0 +1,39 @@
+name: QuestHub Android build-tools 34 courier
+
+on:
+  pull_request:
+    branches: [ master ]
+    paths:
+      - 'questhub-courier-trigger.txt'
+
+jobs:
+  courier:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Install Build Tools 34.0.0
+        shell: bash
+        run: |
+          set -euo pipefail
+          yes | sdkmanager --licenses >/dev/null || true
+          sdkmanager "build-tools;34.0.0"
+          test -x "$ANDROID_SDK_ROOT/build-tools/34.0.0/aapt2"
+
+      - name: Package Build Tools 34.0.0
+        shell: bash
+        run: |
+          set -euo pipefail
+          tar -C "$ANDROID_SDK_ROOT/build-tools" -czf "$RUNNER_TEMP/build-tools-34.0.0.tgz" 34.0.0
+          sha256sum "$RUNNER_TEMP/build-tools-34.0.0.tgz" > "$RUNNER_TEMP/build-tools-34.0.0.tgz.sha256"
+
+      - name: Upload Build Tools 34.0.0
+        uses: actions/upload-artifact@v4
+        with:
+          name: questhub-build-tools-34
+          path: |
+            ${{ runner.temp }}/build-tools-34.0.0.tgz
+            ${{ runner.temp }}/build-tools-34.0.0.tgz.sha256
+          retention-days: 1
