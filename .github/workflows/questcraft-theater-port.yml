@@ -102,6 +102,7 @@ jobs:
           replace(renderer, '        MC.player.lastYaw = renderLastYaw;\n        MC.player.lastPitch = renderLastPitch;\n', '')
           replace(renderer, '        MC.player.lastYaw = previousPlayerLastYaw;\n        MC.player.lastPitch = previousPlayerLastPitch;\n', '')
           replace(renderer, '            theaterFramebuffer = new SimpleFramebuffer("Theater", THEATER_WIDTH, THEATER_HEIGHT, true);', '            theaterFramebuffer = new SimpleFramebuffer(THEATER_WIDTH, THEATER_HEIGHT, true, false);')
+          replace(renderer, '        return RenderPass.VANILLA;', '        return previousPass != null ? previousPass : RenderPass.CENTER;')
 
           env = 'src/client/java/dev/justfeli/vtm/client/environment/TheaterEnvironmentManager.java'
           replace(env,
