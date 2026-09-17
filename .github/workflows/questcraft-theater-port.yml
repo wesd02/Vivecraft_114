@@ -145,6 +145,43 @@ jobs:
           echo "$status" > ../questcraft-theater-compile.status
           exit 0
 
+      - name: Export offline build kit
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f questcraft-theater-compile.status
+          test "$(cat questcraft-theater-compile.status)" = "0"
+
+          rm -rf offline-sdk theater-pristine
+          mkdir -p offline-sdk/gradle-user-home
+
+          git clone https://github.com/TheReal-Flo/VivecraftTheaterMode.git theater-pristine
+          git -C theater-pristine checkout --detach 784739025e0395356640cad21833a98fae7b540f
+          test "$(git -C theater-pristine rev-parse HEAD)" = '784739025e0395356640cad21833a98fae7b540f'
+          mkdir -p theater-pristine/lib
+          cp theater/lib/vivecraft-1.21.1-1.2.5-fabric.jar theater-pristine/lib/
+
+          cp -a "$HOME/.gradle/caches" offline-sdk/gradle-user-home/
+          if [ -d "$HOME/.gradle/native" ]; then
+            cp -a "$HOME/.gradle/native" offline-sdk/gradle-user-home/
+          fi
+
+          curl -fL --retry 3 'https://services.gradle.org/distributions/gradle-9.4.0-bin.zip' -o offline-sdk/gradle-9.4.0-bin.zip
+          mv theater-pristine offline-sdk/
+          du -sh offline-sdk offline-sdk/gradle-user-home/caches || true
+          tar -C offline-sdk -czf questcraft-theater-offline-sdk.tar.gz .
+
+      - name: Upload offline build kit
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: questcraft-theater-1.21.1-offline-sdk
+          path: questcraft-theater-offline-sdk.tar.gz
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 2
+
       - name: Persist compile diagnostics on probe branch
         if: github.event_name == 'push'
         run: |
