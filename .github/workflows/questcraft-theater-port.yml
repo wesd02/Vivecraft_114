@@ -26,6 +26,11 @@ jobs:
           distribution: temurin
           java-version: '21'
 
+      - name: Set up Gradle 9.4.0
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '9.4.0'
+
       - name: Clone pinned public Theater Mode
         run: |
           set -euo pipefail
@@ -63,9 +68,7 @@ jobs:
 
       - name: Compile public upstream against QuestCraft stack
         working-directory: theater
-        run: |
-          chmod +x gradlew
-          ./gradlew --no-daemon clean build --stacktrace
+        run: gradle --no-daemon clean build --stacktrace
 
       - name: Upload compile output
         if: success()
