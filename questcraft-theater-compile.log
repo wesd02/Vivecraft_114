@@ -38,15 +38,15 @@ Cannot remap vivecraft$setupRVE because it does not exist in any of the targets 
 Cannot remap vivecraft$restoreRVEPos because it does not exist in any of the targets [net/minecraft/client/render/GameRenderer]
 Cannot remap freemoveDirection because it does not exist in any of the targets [org/vivecraft/client_vr/gameplay/VRPlayer]
 Cannot remap applyDrag because it does not exist in any of the targets [org/vivecraft/client_vr/gameplay/VRPlayer]
-Cannot remap method_1523 because it does not exist in any of the targets [net/minecraft/client/MinecraftClient]
-Cannot remap method_1523 because it does not exist in any of the targets [net/minecraft/client/MinecraftClient]
 Cannot remap isVRPlayer because it does not exist in any of the targets [org/vivecraft/client/ClientVRPlayers]
 Cannot remap method_1522 because it does not exist in any of the targets [net/minecraft/client/MinecraftClient]
+Cannot remap method_1523 because it does not exist in any of the targets [net/minecraft/client/MinecraftClient]
+Cannot remap method_1523 because it does not exist in any of the targets [net/minecraft/client/MinecraftClient]
 > Task :remapJar
 > Task :remapSourcesJar
 > Task :assemble
 > Task :build
-gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/compile-1789681925999.json
+gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/compile-1789683467223.json
 
 [Incubating] Problems report is available at: file:///home/runner/work/Vivecraft_114/Vivecraft_114/theater/build/reports/problems/problems-report.html
 
@@ -56,5 +56,5 @@ You can use '--warning-mode all' to show the individual deprecation warnings and
 
 For more on this, please refer to https://docs.gradle.org/9.4.0/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
 
-BUILD SUCCESSFUL in 1m 10s
+BUILD SUCCESSFUL in 1m 12s
 10 actionable tasks: 10 executed
