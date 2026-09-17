@@ -68,6 +68,90 @@ jobs:
           curl -fL --retry 3 'https://github.com/QuestCraftPlusPlus/VivecraftMod/releases/download/1.21.1-1.2.1-openxr/vivecraft-1.21.1-1.2.5-fabric.jar' -o theater/lib/vivecraft-1.21.1-1.2.5-fabric.jar
           echo '82080a982e4457e59768682a6f94c390727c3e10919fc45bd7257356fdf3b41a  theater/lib/vivecraft-1.21.1-1.2.5-fabric.jar' | sha256sum -c -
 
+      - name: Apply minimal 1.21.1 compatibility patch
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          import json
+
+          root = Path('theater')
+
+          def replace(path, old, new, count=-1):
+              p = root / path
+              text = p.read_text()
+              if old not in text:
+                  raise SystemExit(f'missing patch anchor in {path}: {old[:100]!r}')
+              text = text.replace(old, new, count)
+              p.write_text(text)
+
+          renderer = 'src/client/java/dev/justfeli/vtm/client/render/TheaterRenderer.java'
+          replace(renderer,
+                  'import org.vivecraft.api.client.data.RenderPass;',
+                  'import org.vivecraft.client_vr.render.RenderPass;')
+          replace(renderer,
+                  '        MC.player.lastYaw = theaterViewYaw;\n', '')
+          replace(renderer,
+                  '        theaterFramebuffer.resize(THEATER_WIDTH, THEATER_HEIGHT);',
+                  '        theaterFramebuffer.resize(THEATER_WIDTH, THEATER_HEIGHT, false);')
+          replace(renderer,
+                  '            theaterFramebuffer.resize(THEATER_WIDTH, THEATER_HEIGHT);',
+                  '            theaterFramebuffer.resize(THEATER_WIDTH, THEATER_HEIGHT, false);')
+          replace(renderer,
+                  '''        RenderSystem.getDevice().createCommandEncoder().clearColorAndDepthTextures(\n            theaterFramebuffer.getColorAttachment(), 0xFF000000,\n            theaterFramebuffer.getDepthAttachment(), 1.0\n        );''',
+                  '        theaterFramebuffer.clear(false);')
+          replace(renderer,
+                  '''            RenderSystem.getDevice().createCommandEncoder().clearColorAndDepthTextures(\n                theaterFramebuffer.getColorAttachment(), 0xFF000000,\n                theaterFramebuffer.getDepthAttachment(), 1.0\n            );''',
+                  '            theaterFramebuffer.clear(false);')
+          replace(renderer, 'getTickProgress(', 'getTickDelta(')
+          replace(renderer,
+                  '    private static float previousPlayerLastYaw;\n    private static float previousPlayerLastPitch;\n', '')
+          replace(renderer,
+                  '        previousPlayerLastYaw = MC.player.lastYaw;\n        previousPlayerLastPitch = MC.player.lastPitch;\n', '')
+          replace(renderer,
+                  '        float renderLastYaw = theaterViewYaw;\n        float renderLastPitch = MC.player.lastPitch;\n', '')
+          replace(renderer,
+                  '        MC.player.lastYaw = renderLastYaw;\n        MC.player.lastPitch = renderLastPitch;\n', '')
+          replace(renderer,
+                  '        MC.player.lastYaw = previousPlayerLastYaw;\n        MC.player.lastPitch = previousPlayerLastPitch;\n', '')
+          replace(renderer,
+                  '            theaterFramebuffer = new SimpleFramebuffer("Theater", THEATER_WIDTH, THEATER_HEIGHT, true);',
+                  '            theaterFramebuffer = new SimpleFramebuffer(THEATER_WIDTH, THEATER_HEIGHT, true, false);')
+
+          env = 'src/client/java/dev/justfeli/vtm/client/environment/TheaterEnvironmentManager.java'
+          replace(env,
+                  '''            RenderSystem.getDevice().createCommandEncoder().clearColorAndDepthTextures(\n                MC.getFramebuffer().getColorAttachment(), 0xFF000000,\n                MC.getFramebuffer().getDepthAttachment(), 1.0\n            );''',
+                  '            MC.getFramebuffer().clear(false);')
+          replace(env,
+                  '''                if (scene.objects.isEmpty()) {\n                    VREffectsHelper.renderMenuEnvironment();\n                    return;\n                }''',
+                  '''                if (scene.objects.isEmpty()) {\n                    return;\n                }''')
+
+          mc_render = 'src/client/java/dev/justfeli/vtm/mixin/client/MinecraftClientRenderMixin.java'
+          replace(mc_render,
+                  '''            RenderSystem.getDevice().createCommandEncoder().clearColorAndDepthTextures(\n                GuiHandler.GUI_FRAMEBUFFER.getColorAttachment(), 0x00000000,\n                GuiHandler.GUI_FRAMEBUFFER.getDepthAttachment(), 1.0\n            );''',
+                  '            GuiHandler.GUI_FRAMEBUFFER.clear(false);')
+
+          # 1.21.5-only settings/player-render-state integration. The generic VRSettings
+          # mixin still cycles STANDING -> SEATED -> THEATER on 1.21.1.
+          for rel in [
+              'src/client/java/dev/justfeli/vtm/mixin/client/GuiMainVRSettingsMixin.java',
+              'src/client/java/dev/justfeli/vtm/mixin/client/GuiVROptionsBaseAccessor.java',
+              'src/client/java/dev/justfeli/vtm/mixin/client/PlayerRendererTheaterMixin.java',
+          ]:
+              (root / rel).unlink()
+
+          mixins_path = root / 'src/client/resources/vivecraft_theater_mode.client.mixins.json'
+          data = json.loads(mixins_path.read_text())
+          remove = {'GuiMainVRSettingsMixin', 'GuiVROptionsBaseAccessor', 'PlayerRendererTheaterMixin'}
+          data['client'] = [m for m in data['client'] if m not in remove]
+          mixins_path.write_text(json.dumps(data, indent=2) + '\n')
+
+          # Keep only the core panel injection on 1.21.1. Newer GPU-texture render-layer
+          # redirects and GUI framebuffer blitting do not exist in this Minecraft version.
+          vreffects = root / 'src/client/java/dev/justfeli/vtm/mixin/client/VREffectsHelperMixin.java'
+          vreffects.write_text('''package dev.justfeli.vtm.mixin.client;\n\nimport dev.justfeli.vtm.client.playmode.TheaterMode;\nimport dev.justfeli.vtm.client.render.TheaterRenderer;\nimport org.spongepowered.asm.mixin.Mixin;\nimport org.spongepowered.asm.mixin.injection.At;\nimport org.spongepowered.asm.mixin.injection.Inject;\nimport org.spongepowered.asm.mixin.injection.callback.CallbackInfo;\nimport org.vivecraft.client_vr.render.helpers.VREffectsHelper;\n\n@Mixin(VREffectsHelper.class)\nabstract class VREffectsHelperMixin {\n    @Inject(method = "renderGuiAndShadow(FZZ)V", at = @At("HEAD"))\n    private static void vtm$prepareTheaterPanel(float partialTick, boolean depthAlways, boolean shadowFirst, CallbackInfo ci) {\n        if (TheaterMode.isActive()) {\n            TheaterRenderer.placeGuiSurface();\n        }\n    }\n\n    @Inject(method = "renderGuiLayer(FZ)V", at = @At("HEAD"))\n    private static void vtm$renderTheaterPanel(float partialTick, boolean depthAlways, CallbackInfo ci) {\n        if (TheaterMode.isActive() && TheaterRenderer.hasTheaterFramebuffer()) {\n            TheaterRenderer.renderTheaterLayer(partialTick, depthAlways);\n        }\n    }\n}\n''')
+          PY
+
       - name: Compile public upstream against QuestCraft stack
         id: compile
         working-directory: theater
