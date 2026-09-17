@@ -86,17 +86,9 @@ jobs:
               p.write_text(text)
 
           renderer = 'src/client/java/dev/justfeli/vtm/client/render/TheaterRenderer.java'
-          replace(renderer,
-                  'import org.vivecraft.api.client.data.RenderPass;',
-                  'import org.vivecraft.client_vr.render.RenderPass;')
-          replace(renderer,
-                  '        MC.player.lastYaw = theaterViewYaw;\n', '')
-          replace(renderer,
-                  '        theaterFramebuffer.resize(THEATER_WIDTH, THEATER_HEIGHT);',
-                  '        theaterFramebuffer.resize(THEATER_WIDTH, THEATER_HEIGHT, false);')
-          replace(renderer,
-                  '            theaterFramebuffer.resize(THEATER_WIDTH, THEATER_HEIGHT);',
-                  '            theaterFramebuffer.resize(THEATER_WIDTH, THEATER_HEIGHT, false);')
+          replace(renderer, 'import org.vivecraft.api.client.data.RenderPass;', 'import org.vivecraft.client_vr.render.RenderPass;')
+          replace(renderer, '        MC.player.lastYaw = theaterViewYaw;\n', '')
+          replace(renderer, 'theaterFramebuffer.resize(THEATER_WIDTH, THEATER_HEIGHT);', 'theaterFramebuffer.resize(THEATER_WIDTH, THEATER_HEIGHT, false);')
           replace(renderer,
                   '''        RenderSystem.getDevice().createCommandEncoder().clearColorAndDepthTextures(\n            theaterFramebuffer.getColorAttachment(), 0xFF000000,\n            theaterFramebuffer.getDepthAttachment(), 1.0\n        );''',
                   '        theaterFramebuffer.clear(false);')
@@ -104,19 +96,12 @@ jobs:
                   '''            RenderSystem.getDevice().createCommandEncoder().clearColorAndDepthTextures(\n                theaterFramebuffer.getColorAttachment(), 0xFF000000,\n                theaterFramebuffer.getDepthAttachment(), 1.0\n            );''',
                   '            theaterFramebuffer.clear(false);')
           replace(renderer, 'getTickProgress(', 'getTickDelta(')
-          replace(renderer,
-                  '    private static float previousPlayerLastYaw;\n    private static float previousPlayerLastPitch;\n', '')
-          replace(renderer,
-                  '        previousPlayerLastYaw = MC.player.lastYaw;\n        previousPlayerLastPitch = MC.player.lastPitch;\n', '')
-          replace(renderer,
-                  '        float renderLastYaw = theaterViewYaw;\n        float renderLastPitch = MC.player.lastPitch;\n', '')
-          replace(renderer,
-                  '        MC.player.lastYaw = renderLastYaw;\n        MC.player.lastPitch = renderLastPitch;\n', '')
-          replace(renderer,
-                  '        MC.player.lastYaw = previousPlayerLastYaw;\n        MC.player.lastPitch = previousPlayerLastPitch;\n', '')
-          replace(renderer,
-                  '            theaterFramebuffer = new SimpleFramebuffer("Theater", THEATER_WIDTH, THEATER_HEIGHT, true);',
-                  '            theaterFramebuffer = new SimpleFramebuffer(THEATER_WIDTH, THEATER_HEIGHT, true, false);')
+          replace(renderer, '    private static float previousPlayerLastYaw;\n    private static float previousPlayerLastPitch;\n', '')
+          replace(renderer, '        previousPlayerLastYaw = MC.player.lastYaw;\n        previousPlayerLastPitch = MC.player.lastPitch;\n', '')
+          replace(renderer, '        float renderLastYaw = theaterViewYaw;\n        float renderLastPitch = MC.player.lastPitch;\n', '')
+          replace(renderer, '        MC.player.lastYaw = renderLastYaw;\n        MC.player.lastPitch = renderLastPitch;\n', '')
+          replace(renderer, '        MC.player.lastYaw = previousPlayerLastYaw;\n        MC.player.lastPitch = previousPlayerLastPitch;\n', '')
+          replace(renderer, '            theaterFramebuffer = new SimpleFramebuffer("Theater", THEATER_WIDTH, THEATER_HEIGHT, true);', '            theaterFramebuffer = new SimpleFramebuffer(THEATER_WIDTH, THEATER_HEIGHT, true, false);')
 
           env = 'src/client/java/dev/justfeli/vtm/client/environment/TheaterEnvironmentManager.java'
           replace(env,
@@ -131,8 +116,6 @@ jobs:
                   '''            RenderSystem.getDevice().createCommandEncoder().clearColorAndDepthTextures(\n                GuiHandler.GUI_FRAMEBUFFER.getColorAttachment(), 0x00000000,\n                GuiHandler.GUI_FRAMEBUFFER.getDepthAttachment(), 1.0\n            );''',
                   '            GuiHandler.GUI_FRAMEBUFFER.clear(false);')
 
-          # 1.21.5-only settings/player-render-state integration. The generic VRSettings
-          # mixin still cycles STANDING -> SEATED -> THEATER on 1.21.1.
           for rel in [
               'src/client/java/dev/justfeli/vtm/mixin/client/GuiMainVRSettingsMixin.java',
               'src/client/java/dev/justfeli/vtm/mixin/client/GuiVROptionsBaseAccessor.java',
@@ -146,8 +129,6 @@ jobs:
           data['client'] = [m for m in data['client'] if m not in remove]
           mixins_path.write_text(json.dumps(data, indent=2) + '\n')
 
-          # Keep only the core panel injection on 1.21.1. Newer GPU-texture render-layer
-          # redirects and GUI framebuffer blitting do not exist in this Minecraft version.
           vreffects = root / 'src/client/java/dev/justfeli/vtm/mixin/client/VREffectsHelperMixin.java'
           vreffects.write_text('''package dev.justfeli.vtm.mixin.client;\n\nimport dev.justfeli.vtm.client.playmode.TheaterMode;\nimport dev.justfeli.vtm.client.render.TheaterRenderer;\nimport org.spongepowered.asm.mixin.Mixin;\nimport org.spongepowered.asm.mixin.injection.At;\nimport org.spongepowered.asm.mixin.injection.Inject;\nimport org.spongepowered.asm.mixin.injection.callback.CallbackInfo;\nimport org.vivecraft.client_vr.render.helpers.VREffectsHelper;\n\n@Mixin(VREffectsHelper.class)\nabstract class VREffectsHelperMixin {\n    @Inject(method = "renderGuiAndShadow(FZZ)V", at = @At("HEAD"))\n    private static void vtm$prepareTheaterPanel(float partialTick, boolean depthAlways, boolean shadowFirst, CallbackInfo ci) {\n        if (TheaterMode.isActive()) {\n            TheaterRenderer.placeGuiSurface();\n        }\n    }\n\n    @Inject(method = "renderGuiLayer(FZ)V", at = @At("HEAD"))\n    private static void vtm$renderTheaterPanel(float partialTick, boolean depthAlways, CallbackInfo ci) {\n        if (TheaterMode.isActive() && TheaterRenderer.hasTheaterFramebuffer()) {\n            TheaterRenderer.renderTheaterLayer(partialTick, depthAlways);\n        }\n    }\n}\n''')
           PY
@@ -191,4 +172,6 @@ jobs:
 
       - name: Enforce compile result
         if: always()
-        run: exit "$(cat questcraft-theater-compile.status)"
+        run: |
+          test -f questcraft-theater-compile.status
+          exit "$(cat questcraft-theater-compile.status)"
