@@ -1,0 +1,1 @@
+This branch exists only to run a public-source compatibility compile of Vivecraft Theater Mode against QuestCraft's public Minecraft 1.21.1 Vivecraft dependency. It contains no private Questbridge source and should not be merged after the probe is complete.

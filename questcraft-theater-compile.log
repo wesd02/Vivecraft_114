@@ -1,0 +1,60 @@
+
+Welcome to Gradle 9.4.0!
+
+Here are the highlights of this release:
+ - Java 26 support
+ - Non-class-based JVM tests
+ - Enhanced console progress bar
+
+For more details see https://docs.gradle.org/9.4.0/release-notes.html
+
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/9.4.0/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+
+> Configure project :
+Fabric Loom: 1.16.3
+
+> Task :clean
+> Task :compileJava
+> Task :processResources
+> Task :classes
+> Task :compileClientJava
+> Task :processClientResources
+> Task :jar
+> Task :processIncludeJars
+> Task :sourcesJar
+> Task :clientClasses
+> Task :compileTestJava NO-SOURCE
+> Task :processTestResources NO-SOURCE
+> Task :testClasses UP-TO-DATE
+> Task :test NO-SOURCE
+> Task :validateAccessWidener NO-SOURCE
+> Task :check UP-TO-DATE
+Cannot remap field_1689 because it does not exist in any of the targets [net/minecraft/client/MinecraftClient] or their parents.
+Cannot remap field_1719 because it does not exist in any of the targets [net/minecraft/client/MinecraftClient] or their parents.
+Cannot remap field_1719 because it does not exist in any of the targets [net/minecraft/client/MinecraftClient] or their parents.
+Cannot remap vivecraft$cacheRVEPos because it does not exist in any of the targets [net/minecraft/client/render/GameRenderer]
+Cannot remap vivecraft$setupRVE because it does not exist in any of the targets [net/minecraft/client/render/GameRenderer]
+Cannot remap vivecraft$restoreRVEPos because it does not exist in any of the targets [net/minecraft/client/render/GameRenderer]
+Cannot remap freemoveDirection because it does not exist in any of the targets [org/vivecraft/client_vr/gameplay/VRPlayer]
+Cannot remap applyDrag because it does not exist in any of the targets [org/vivecraft/client_vr/gameplay/VRPlayer]
+Cannot remap isVRPlayer because it does not exist in any of the targets [org/vivecraft/client/ClientVRPlayers]
+Cannot remap method_1522 because it does not exist in any of the targets [net/minecraft/client/MinecraftClient]
+Cannot remap method_1523 because it does not exist in any of the targets [net/minecraft/client/MinecraftClient]
+Cannot remap method_1523 because it does not exist in any of the targets [net/minecraft/client/MinecraftClient]
+> Task :remapJar
+> Task :remapSourcesJar
+> Task :assemble
+> Task :build
+gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/compile-1789683467223.json
+
+[Incubating] Problems report is available at: file:///home/runner/work/Vivecraft_114/Vivecraft_114/theater/build/reports/problems/problems-report.html
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 10.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/9.4.0/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD SUCCESSFUL in 1m 12s
+10 actionable tasks: 10 executed

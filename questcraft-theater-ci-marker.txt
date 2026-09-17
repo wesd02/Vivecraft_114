@@ -1,0 +1,1 @@
+Temporary public CI probe for compiling the public Vivecraft Theater Mode upstream against the public QuestCraft 1.21.1 Vivecraft stack. No private Questbridge source is included.
