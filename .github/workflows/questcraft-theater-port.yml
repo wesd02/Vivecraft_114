@@ -1,0 +1,72 @@
+name: Probe QuestCraft Theater 1.21.1 port
+
+on:
+  push:
+    branches:
+      - ci/questcraft-theater-port
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  compile-public-upstream:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: Clone pinned public Theater Mode
+        run: |
+          set -euo pipefail
+          git clone https://github.com/TheReal-Flo/VivecraftTheaterMode.git theater
+          cd theater
+          git checkout --detach 784739025e0395356640cad21833a98fae7b540f
+          test "$(git rev-parse HEAD)" = '784739025e0395356640cad21833a98fae7b540f'
+
+      - name: Retarget public source to Minecraft 1.21.1
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path('theater/gradle.properties')
+          text = p.read_text()
+          replacements = {
+              'minecraft_version=1.21.5': 'minecraft_version=1.21.1',
+              'yarn_mappings=1.21.5+build.1': 'yarn_mappings=1.21.1+build.3',
+              'loader_version=0.19.3': 'loader_version=0.16.14',
+              'fabric_version=0.128.2+1.21.5': 'fabric_version=0.116.7+1.21.1',
+          }
+          for old, new in replacements.items():
+              if old not in text:
+                  raise SystemExit(f'missing expected version anchor: {old}')
+              text = text.replace(old, new, 1)
+          p.write_text(text)
+          PY
+
+      - name: Add QuestCraft Vivecraft 1.21.1 OpenXR dependency
+        run: |
+          set -euo pipefail
+          mkdir -p theater/lib
+          curl -fL --retry 3 'https://github.com/QuestCraftPlusPlus/VivecraftMod/releases/download/1.21.1-1.2.1-openxr/vivecraft-1.21.1-1.2.5-fabric.jar' -o theater/lib/vivecraft-1.21.1-1.2.5-fabric.jar
+          echo '82080a982e4457e59768682a6f94c390727c3e10919fc45bd7257356fdf3b41a  theater/lib/vivecraft-1.21.1-1.2.5-fabric.jar' | sha256sum -c -
+
+      - name: Compile public upstream against QuestCraft stack
+        working-directory: theater
+        run: |
+          chmod +x gradlew
+          ./gradlew --no-daemon clean build --stacktrace
+
+      - name: Upload compile output
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: public-theater-1.21.1-probe
+          path: theater/build/libs/
+          if-no-files-found: error
+          retention-days: 2
