@@ -12,7 +12,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   compile-public-upstream:
@@ -20,6 +20,8 @@ jobs:
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event_name == 'push' && github.ref_name || github.event.pull_request.head.sha }}
 
       - uses: actions/setup-java@v4
         with:
@@ -67,14 +69,42 @@ jobs:
           echo '82080a982e4457e59768682a6f94c390727c3e10919fc45bd7257356fdf3b41a  theater/lib/vivecraft-1.21.1-1.2.5-fabric.jar' | sha256sum -c -
 
       - name: Compile public upstream against QuestCraft stack
+        id: compile
         working-directory: theater
-        run: gradle --no-daemon clean build --stacktrace
+        shell: bash
+        run: |
+          set +e
+          gradle --no-daemon clean build --stacktrace 2>&1 | tee ../questcraft-theater-compile.log
+          status=${PIPESTATUS[0]}
+          echo "$status" > ../questcraft-theater-compile.status
+          exit 0
 
-      - name: Upload compile output
-        if: success()
+      - name: Persist compile diagnostics on probe branch
+        if: github.event_name == 'push'
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add questcraft-theater-compile.log questcraft-theater-compile.status
+          if git diff --cached --quiet; then
+            echo 'Compile diagnostics unchanged.'
+          else
+            git commit -m 'ci: capture Theater compile diagnostics [skip ci]'
+            git push origin HEAD:ci/questcraft-theater-port
+          fi
+
+      - name: Upload built jar
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: public-theater-1.21.1-probe
-          path: theater/build/libs/
-          if-no-files-found: error
+          path: |
+            theater/build/libs/
+            questcraft-theater-compile.log
+            questcraft-theater-compile.status
+          if-no-files-found: warn
           retention-days: 2
+
+      - name: Enforce compile result
+        if: always()
+        run: exit "$(cat questcraft-theater-compile.status)"
