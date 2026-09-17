@@ -20,220 +20,13 @@ Fabric Loom: 1.16.3
 > Task :classes
 
 > Task :compileClientJava FAILED
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/render/TheaterRenderer.java:13: error: package org.vivecraft.api.client.data does not exist
-import org.vivecraft.api.client.data.RenderPass;
-                                    ^
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/render/TheaterRenderer.java:368: error: cannot find symbol
-    private static void restorePreviousRenderPass(WorldRenderPass previousWorldPass, RenderPass previousPass) {
-                                                                                     ^
-  symbol:   class RenderPass
-  location: class TheaterRenderer
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/render/TheaterRenderer.java:388: error: cannot find symbol
-    private static RenderPass getCompatibleRenderPass(WorldRenderPass previousWorldPass, RenderPass previousPass) {
-                                                                                         ^
-  symbol:   class RenderPass
-  location: class TheaterRenderer
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/render/TheaterRenderer.java:388: error: cannot find symbol
-    private static RenderPass getCompatibleRenderPass(WorldRenderPass previousWorldPass, RenderPass previousPass) {
-                   ^
-  symbol:   class RenderPass
-  location: class TheaterRenderer
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/mixin/client/VREffectsHelperMixin.java:3: error: package com.mojang.blaze3d.textures does not exist
-import com.mojang.blaze3d.textures.GpuTexture;
-                                  ^
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/mixin/client/VREffectsHelperMixin.java:16: error: package org.vivecraft.client_vr.render.rendertypes does not exist
-import org.vivecraft.client_vr.render.rendertypes.VRRenderTypes;
-                                                 ^
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/mixin/client/VREffectsHelperMixin.java:83: error: cannot find symbol
-    private static RenderLayer vtm$opaqueTheaterPanel(GpuTexture texture, boolean depthAlways) {
-                                                      ^
-  symbol:   class GpuTexture
-  location: class VREffectsHelperMixin
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/mixin/client/GuiMainVRSettingsMixin.java:11: error: package org.vivecraft.client.gui.framework.widgets does not exist
-import org.vivecraft.client.gui.framework.widgets.GuiVROption;
-                                                 ^
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/mixin/client/GuiMainVRSettingsMixin.java:24: error: cannot find symbol
-        GuiVROption button,
-        ^
-  symbol:   class GuiVROption
-  location: class GuiMainVRSettingsMixin
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/mixin/client/GuiMainVRSettingsMixin.java:52: error: cannot find symbol
-        GuiVROption button,
-        ^
-  symbol:   class GuiVROption
-  location: class GuiMainVRSettingsMixin
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/mixin/client/GuiMainVRSettingsMixin.java:64: error: cannot find symbol
-        GuiVROption button,
-        ^
-  symbol:   class GuiVROption
-  location: class GuiMainVRSettingsMixin
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/mixin/client/PlayerRendererTheaterMixin.java:7: error: package net.minecraft.client.render.entity.state does not exist
-import net.minecraft.client.render.entity.state.PlayerEntityRenderState;
-                                               ^
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/mixin/client/PlayerRendererTheaterMixin.java:12: error: cannot find symbol
-import org.vivecraft.client.extensions.EntityRenderStateExtension;
-                                      ^
-  symbol:   class EntityRenderStateExtension
-  location: package org.vivecraft.client.extensions
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/mixin/client/PlayerRendererTheaterMixin.java:19: error: cannot find symbol
-        PlayerEntityRenderState state,
-        ^
-  symbol:   class PlayerEntityRenderState
-  location: class PlayerRendererTheaterMixin
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/mixin/client/GuiVROptionsBaseAccessor.java:5: error: package org.vivecraft.client.gui.framework.screens does not exist
-import org.vivecraft.client.gui.framework.screens.GuiVROptionsBase;
-                                                 ^
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/mixin/client/GuiVROptionsBaseAccessor.java:7: error: cannot find symbol
-@Mixin(GuiVROptionsBase.class)
-       ^
-  symbol: class GuiVROptionsBase
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/render/TheaterRenderer.java:97: error: lastYaw has private access in ClientPlayerEntity
-        MC.player.lastYaw = theaterViewYaw;
-                 ^
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/render/TheaterRenderer.java:172: error: method resize in class Framebuffer cannot be applied to given types;
-        theaterFramebuffer.resize(THEATER_WIDTH, THEATER_HEIGHT);
-                          ^
-  required: int,int,boolean
-  found:    int,int
-  reason: actual and formal argument lists differ in length
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/render/TheaterRenderer.java:173: error: cannot find symbol
-        RenderSystem.getDevice().createCommandEncoder().clearColorAndDepthTextures(
-                    ^
-  symbol:   method getDevice()
-  location: class RenderSystem
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/render/TheaterRenderer.java:199: error: method resize in class Framebuffer cannot be applied to given types;
-            theaterFramebuffer.resize(THEATER_WIDTH, THEATER_HEIGHT);
-                              ^
-  required: int,int,boolean
-  found:    int,int
-  reason: actual and formal argument lists differ in length
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/render/TheaterRenderer.java:200: error: cannot find symbol
-            RenderSystem.getDevice().createCommandEncoder().clearColorAndDepthTextures(
-                        ^
-  symbol:   method getDevice()
-  location: class RenderSystem
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/render/TheaterRenderer.java:212: error: cannot find symbol
-                renderTickCounter.getTickProgress(true)
-                                 ^
-  symbol:   method getTickProgress(boolean)
-  location: variable renderTickCounter of type RenderTickCounter
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/render/TheaterRenderer.java:215: error: cannot find symbol
-                renderTickCounter.getTickProgress(false)
-                                 ^
-  symbol:   method getTickProgress(boolean)
-  location: variable renderTickCounter of type RenderTickCounter
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/render/TheaterRenderer.java:287: error: lastYaw has private access in ClientPlayerEntity
-        previousPlayerLastYaw = MC.player.lastYaw;
-                                         ^
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/render/TheaterRenderer.java:288: error: lastPitch has private access in ClientPlayerEntity
-        previousPlayerLastPitch = MC.player.lastPitch;
-                                           ^
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/render/TheaterRenderer.java:302: error: lastPitch has private access in ClientPlayerEntity
-        float renderLastPitch = MC.player.lastPitch;
-                                         ^
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/render/TheaterRenderer.java:308: error: lastYaw has private access in ClientPlayerEntity
-        MC.player.lastYaw = renderLastYaw;
-                 ^
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/render/TheaterRenderer.java:309: error: lastPitch has private access in ClientPlayerEntity
-        MC.player.lastPitch = renderLastPitch;
-                 ^
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/render/TheaterRenderer.java:329: error: lastYaw has private access in ClientPlayerEntity
-        MC.player.lastYaw = previousPlayerLastYaw;
-                 ^
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/render/TheaterRenderer.java:330: error: lastPitch has private access in ClientPlayerEntity
-        MC.player.lastPitch = previousPlayerLastPitch;
-                 ^
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/render/TheaterRenderer.java:343: error: incompatible types: String cannot be converted to int
-            theaterFramebuffer = new SimpleFramebuffer("Theater", THEATER_WIDTH, THEATER_HEIGHT, true);
-                                                       ^
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/render/TheaterRenderer.java:375: error: cannot find symbol
-        if (previousPass == RenderPass.GUI) {
-                            ^
-  symbol:   variable RenderPass
-  location: class TheaterRenderer
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/render/TheaterRenderer.java:380: error: cannot find symbol
-        if (previousPass == RenderPass.MIRROR) {
-                            ^
-  symbol:   variable RenderPass
-  location: class TheaterRenderer
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/render/TheaterRenderer.java:394: error: cannot find symbol
-            return RenderPass.LEFT;
-                   ^
-  symbol:   variable RenderPass
-  location: class TheaterRenderer
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/render/TheaterRenderer.java:397: error: cannot find symbol
-            return RenderPass.CENTER;
-                   ^
-  symbol:   variable RenderPass
-  location: class TheaterRenderer
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/render/TheaterRenderer.java:400: error: cannot find symbol
-            return RenderPass.THIRD;
-                   ^
-  symbol:   variable RenderPass
-  location: class TheaterRenderer
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/render/TheaterRenderer.java:403: error: cannot find symbol
-            return RenderPass.SCOPEL;
-                   ^
-  symbol:   variable RenderPass
-  location: class TheaterRenderer
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/render/TheaterRenderer.java:406: error: cannot find symbol
-            return RenderPass.SCOPER;
-                   ^
-  symbol:   variable RenderPass
-  location: class TheaterRenderer
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/render/TheaterRenderer.java:409: error: cannot find symbol
-            return RenderPass.CAMERA;
-                   ^
-  symbol:   variable RenderPass
-  location: class TheaterRenderer
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/render/TheaterRenderer.java:412: error: cannot find symbol
+/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/render/TheaterRenderer.java:395: error: cannot find symbol
         return RenderPass.VANILLA;
-               ^
-  symbol:   variable RenderPass
-  location: class TheaterRenderer
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/environment/TheaterEnvironmentManager.java:349: error: cannot find symbol
-            RenderSystem.getDevice().createCommandEncoder().clearColorAndDepthTextures(
-                        ^
-  symbol:   method getDevice()
-  location: class RenderSystem
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/environment/TheaterEnvironmentManager.java:375: error: cannot find symbol
-                    VREffectsHelper.renderMenuEnvironment();
-                                   ^
-  symbol:   method renderMenuEnvironment()
-  location: class VREffectsHelper
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/mixin/client/VREffectsHelperMixin.java:51: error: cannot find symbol
-            VREffectsHelper.renderMenuEnvironment();
-                           ^
-  symbol:   method renderMenuEnvironment()
-  location: class VREffectsHelper
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/mixin/client/VREffectsHelperMixin.java:63: error: cannot find symbol
-                ShaderHelper.blit(guiFramebuffer, TheaterRenderer.getTheaterFramebuffer(), true);
-                            ^
-  symbol:   method blit(Framebuffer,Framebuffer,boolean)
-  location: class ShaderHelper
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/mixin/client/VREffectsHelperMixin.java:85: error: cannot find symbol
-            return VRRenderTypes.entitySolidNoCardinalLight(texture);
-                   ^
-  symbol:   variable VRRenderTypes
-  location: class VREffectsHelperMixin
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/mixin/client/VREffectsHelperMixin.java:87: error: cannot find symbol
-        return VRRenderTypes.entityTranslucentNoCardinalLight(texture, depthAlways);
-               ^
-  symbol:   variable VRRenderTypes
-  location: class VREffectsHelperMixin
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/mixin/client/PlayerRendererTheaterMixin.java:24: error: cannot find symbol
-            ((EntityRenderStateExtension) state).vivecraft$setRotInfo(null);
-              ^
-  symbol:   class EntityRenderStateExtension
-  location: class PlayerRendererTheaterMixin
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/mixin/client/MinecraftClientRenderMixin.java:24: error: cannot find symbol
-            RenderSystem.getDevice().createCommandEncoder().clearColorAndDepthTextures(
-                        ^
-  symbol:   method getDevice()
-  location: class RenderSystem
-Note: Some messages have been simplified; recompile with -Xdiags:verbose to get full output
-48 errors
-gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/compile-1789679842255.json
+                         ^
+  symbol:   variable VANILLA
+  location: class RenderPass
+1 error
+gradle/actions: Writing build results to /home/runner/work/_temp/.gradle-actions/build-results/compile-1789681789232.json
 
 [Incubating] Problems report is available at: file:///home/runner/work/Vivecraft_114/Vivecraft_114/theater/build/reports/problems/problems-report.html
 
@@ -242,219 +35,12 @@ FAILURE: Build failed with an exception.
 * What went wrong:
 Execution failed for task ':compileClientJava'.
 > Compilation failed; see the compiler output below.
-  /home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/render/TheaterRenderer.java:172: error: method resize in class Framebuffer cannot be applied to given types;
-          theaterFramebuffer.resize(THEATER_WIDTH, THEATER_HEIGHT);
-                            ^
-    required: int,int,boolean
-    found:    int,int
-    reason: actual and formal argument lists differ in length
-  /home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/render/TheaterRenderer.java:199: error: method resize in class Framebuffer cannot be applied to given types;
-              theaterFramebuffer.resize(THEATER_WIDTH, THEATER_HEIGHT);
-                                ^
-    required: int,int,boolean
-    found:    int,int
-    reason: actual and formal argument lists differ in length
-  /home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/render/TheaterRenderer.java:343: error: incompatible types: String cannot be converted to int
-              theaterFramebuffer = new SimpleFramebuffer("Theater", THEATER_WIDTH, THEATER_HEIGHT, true);
-                                                         ^
-  /home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/render/TheaterRenderer.java:368: error: cannot find symbol
-      private static void restorePreviousRenderPass(WorldRenderPass previousWorldPass, RenderPass previousPass) {
-                                                                                       ^
-    symbol:   class RenderPass
-    location: class TheaterRenderer
-  /home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/render/TheaterRenderer.java:388: error: cannot find symbol
-      private static RenderPass getCompatibleRenderPass(WorldRenderPass previousWorldPass, RenderPass previousPass) {
-                                                                                           ^
-    symbol:   class RenderPass
-    location: class TheaterRenderer
-  /home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/render/TheaterRenderer.java:388: error: cannot find symbol
-      private static RenderPass getCompatibleRenderPass(WorldRenderPass previousWorldPass, RenderPass previousPass) {
-                     ^
-    symbol:   class RenderPass
-    location: class TheaterRenderer
-  /home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/mixin/client/VREffectsHelperMixin.java:83: error: cannot find symbol
-      private static RenderLayer vtm$opaqueTheaterPanel(GpuTexture texture, boolean depthAlways) {
-                                                        ^
-    symbol:   class GpuTexture
-    location: class VREffectsHelperMixin
-  /home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/mixin/client/GuiMainVRSettingsMixin.java:24: error: cannot find symbol
-          GuiVROption button,
-          ^
-    symbol:   class GuiVROption
-    location: class GuiMainVRSettingsMixin
-  /home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/mixin/client/GuiMainVRSettingsMixin.java:52: error: cannot find symbol
-          GuiVROption button,
-          ^
-    symbol:   class GuiVROption
-    location: class GuiMainVRSettingsMixin
-  /home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/mixin/client/GuiMainVRSettingsMixin.java:64: error: cannot find symbol
-          GuiVROption button,
-          ^
-    symbol:   class GuiVROption
-    location: class GuiMainVRSettingsMixin
-  /home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/mixin/client/PlayerRendererTheaterMixin.java:12: error: cannot find symbol
-  import org.vivecraft.client.extensions.EntityRenderStateExtension;
-                                        ^
-    symbol:   class EntityRenderStateExtension
-    location: package org.vivecraft.client.extensions
-  /home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/mixin/client/PlayerRendererTheaterMixin.java:19: error: cannot find symbol
-          PlayerEntityRenderState state,
-          ^
-    symbol:   class PlayerEntityRenderState
-    location: class PlayerRendererTheaterMixin
-  /home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/render/TheaterRenderer.java:375: error: cannot find symbol
-          if (previousPass == RenderPass.GUI) {
-                              ^
-    symbol:   variable RenderPass
-    location: class TheaterRenderer
-  /home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/render/TheaterRenderer.java:380: error: cannot find symbol
-          if (previousPass == RenderPass.MIRROR) {
-                              ^
-    symbol:   variable RenderPass
-    location: class TheaterRenderer
-  /home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/render/TheaterRenderer.java:394: error: cannot find symbol
-              return RenderPass.LEFT;
-                     ^
-    symbol:   variable RenderPass
-    location: class TheaterRenderer
-  /home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/render/TheaterRenderer.java:397: error: cannot find symbol
-              return RenderPass.CENTER;
-                     ^
-    symbol:   variable RenderPass
-    location: class TheaterRenderer
-  /home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/render/TheaterRenderer.java:400: error: cannot find symbol
-              return RenderPass.THIRD;
-                     ^
-    symbol:   variable RenderPass
-    location: class TheaterRenderer
-  /home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/render/TheaterRenderer.java:403: error: cannot find symbol
-              return RenderPass.SCOPEL;
-                     ^
-    symbol:   variable RenderPass
-    location: class TheaterRenderer
-  /home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/render/TheaterRenderer.java:406: error: cannot find symbol
-              return RenderPass.SCOPER;
-                     ^
-    symbol:   variable RenderPass
-    location: class TheaterRenderer
-  /home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/render/TheaterRenderer.java:409: error: cannot find symbol
-              return RenderPass.CAMERA;
-                     ^
-    symbol:   variable RenderPass
-    location: class TheaterRenderer
-  /home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/render/TheaterRenderer.java:412: error: cannot find symbol
+  /home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/render/TheaterRenderer.java:395: error: cannot find symbol
           return RenderPass.VANILLA;
-                 ^
-    symbol:   variable RenderPass
-    location: class TheaterRenderer
-  /home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/mixin/client/VREffectsHelperMixin.java:85: error: cannot find symbol
-              return VRRenderTypes.entitySolidNoCardinalLight(texture);
-                     ^
-    symbol:   variable VRRenderTypes
-    location: class VREffectsHelperMixin
-  /home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/mixin/client/VREffectsHelperMixin.java:87: error: cannot find symbol
-          return VRRenderTypes.entityTranslucentNoCardinalLight(texture, depthAlways);
-                 ^
-    symbol:   variable VRRenderTypes
-    location: class VREffectsHelperMixin
-  /home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/mixin/client/PlayerRendererTheaterMixin.java:24: error: cannot find symbol
-              ((EntityRenderStateExtension) state).vivecraft$setRotInfo(null);
-                ^
-    symbol:   class EntityRenderStateExtension
-    location: class PlayerRendererTheaterMixin
-  /home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/render/TheaterRenderer.java:97: error: lastYaw has private access in ClientPlayerEntity
-          MC.player.lastYaw = theaterViewYaw;
-                   ^
-  /home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/render/TheaterRenderer.java:287: error: lastYaw has private access in ClientPlayerEntity
-          previousPlayerLastYaw = MC.player.lastYaw;
-                                           ^
-  /home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/render/TheaterRenderer.java:288: error: lastPitch has private access in ClientPlayerEntity
-          previousPlayerLastPitch = MC.player.lastPitch;
-                                             ^
-  /home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/render/TheaterRenderer.java:302: error: lastPitch has private access in ClientPlayerEntity
-          float renderLastPitch = MC.player.lastPitch;
-                                           ^
-  /home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/render/TheaterRenderer.java:308: error: lastYaw has private access in ClientPlayerEntity
-          MC.player.lastYaw = renderLastYaw;
-                   ^
-  /home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/render/TheaterRenderer.java:309: error: lastPitch has private access in ClientPlayerEntity
-          MC.player.lastPitch = renderLastPitch;
-                   ^
-  /home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/render/TheaterRenderer.java:329: error: lastYaw has private access in ClientPlayerEntity
-          MC.player.lastYaw = previousPlayerLastYaw;
-                   ^
-  /home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/render/TheaterRenderer.java:330: error: lastPitch has private access in ClientPlayerEntity
-          MC.player.lastPitch = previousPlayerLastPitch;
-                   ^
-  Note: Some messages have been simplified; recompile with -Xdiags:verbose to get full output
-  /home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/mixin/client/GuiVROptionsBaseAccessor.java:7: error: cannot find symbol
-  @Mixin(GuiVROptionsBase.class)
-         ^
-    symbol: class GuiVROptionsBase
-  /home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/render/TheaterRenderer.java:173: error: cannot find symbol
-          RenderSystem.getDevice().createCommandEncoder().clearColorAndDepthTextures(
-                      ^
-    symbol:   method getDevice()
-    location: class RenderSystem
-  /home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/render/TheaterRenderer.java:200: error: cannot find symbol
-              RenderSystem.getDevice().createCommandEncoder().clearColorAndDepthTextures(
-                          ^
-    symbol:   method getDevice()
-    location: class RenderSystem
-  /home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/render/TheaterRenderer.java:212: error: cannot find symbol
-                  renderTickCounter.getTickProgress(true)
-                                   ^
-    symbol:   method getTickProgress(boolean)
-    location: variable renderTickCounter of type RenderTickCounter
-  /home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/render/TheaterRenderer.java:215: error: cannot find symbol
-                  renderTickCounter.getTickProgress(false)
-                                   ^
-    symbol:   method getTickProgress(boolean)
-    location: variable renderTickCounter of type RenderTickCounter
-  /home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/environment/TheaterEnvironmentManager.java:349: error: cannot find symbol
-              RenderSystem.getDevice().createCommandEncoder().clearColorAndDepthTextures(
-                          ^
-    symbol:   method getDevice()
-    location: class RenderSystem
-  /home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/environment/TheaterEnvironmentManager.java:375: error: cannot find symbol
-                      VREffectsHelper.renderMenuEnvironment();
-                                     ^
-    symbol:   method renderMenuEnvironment()
-    location: class VREffectsHelper
-  /home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/mixin/client/VREffectsHelperMixin.java:51: error: cannot find symbol
-              VREffectsHelper.renderMenuEnvironment();
-                             ^
-    symbol:   method renderMenuEnvironment()
-    location: class VREffectsHelper
-  /home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/mixin/client/VREffectsHelperMixin.java:63: error: cannot find symbol
-                  ShaderHelper.blit(guiFramebuffer, TheaterRenderer.getTheaterFramebuffer(), true);
-                              ^
-    symbol:   method blit(Framebuffer,Framebuffer,boolean)
-    location: class ShaderHelper
-  /home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/mixin/client/MinecraftClientRenderMixin.java:24: error: cannot find symbol
-              RenderSystem.getDevice().createCommandEncoder().clearColorAndDepthTextures(
-                          ^
-    symbol:   method getDevice()
-    location: class RenderSystem
-  /home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/render/TheaterRenderer.java:13: error: package org.vivecraft.api.client.data does not exist
-  import org.vivecraft.api.client.data.RenderPass;
-                                      ^
-  /home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/mixin/client/VREffectsHelperMixin.java:3: error: package com.mojang.blaze3d.textures does not exist
-  import com.mojang.blaze3d.textures.GpuTexture;
-                                    ^
-  /home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/mixin/client/VREffectsHelperMixin.java:16: error: package org.vivecraft.client_vr.render.rendertypes does not exist
-  import org.vivecraft.client_vr.render.rendertypes.VRRenderTypes;
-                                                   ^
-  /home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/mixin/client/GuiMainVRSettingsMixin.java:11: error: package org.vivecraft.client.gui.framework.widgets does not exist
-  import org.vivecraft.client.gui.framework.widgets.GuiVROption;
-                                                   ^
-  /home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/mixin/client/PlayerRendererTheaterMixin.java:7: error: package net.minecraft.client.render.entity.state does not exist
-  import net.minecraft.client.render.entity.state.PlayerEntityRenderState;
-                                                 ^
-  /home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/mixin/client/GuiVROptionsBaseAccessor.java:5: error: package org.vivecraft.client.gui.framework.screens does not exist
-  import org.vivecraft.client.gui.framework.screens.GuiVROptionsBase;
-                                                   ^
-  48 errors
+                           ^
+    symbol:   variable VANILLA
+    location: class RenderPass
+  1 error
 
 * Try:
 > Check your code and dependencies to fix the compilation error(s)
@@ -493,222 +79,46 @@ org.gradle.api.tasks.TaskExecutionException: Execution failed for task ':compile
 	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph$BuildOperationAwareExecutionAction.execute(DefaultTaskExecutionGraph.java:328)
 	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.execute(DefaultPlanExecutor.java:459)
 	at org.gradle.execution.plan.DefaultPlanExecutor$ExecutorWorker.run(DefaultPlanExecutor.java:376)
+	at org.gradle.execution.plan.DefaultPlanExecutor.process(DefaultPlanExecutor.java:111)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph.executeWithServices(DefaultTaskExecutionGraph.java:146)
+	at org.gradle.execution.taskgraph.DefaultTaskExecutionGraph.execute(DefaultTaskExecutionGraph.java:131)
+	at org.gradle.execution.SelectedTaskExecutionAction.execute(SelectedTaskExecutionAction.java:35)
+	at org.gradle.execution.BuildOperationFiringBuildWorkerExecutor$ExecuteTasks.call(BuildOperationFiringBuildWorkerExecutor.java:54)
+	at org.gradle.execution.BuildOperationFiringBuildWorkerExecutor$ExecuteTasks.call(BuildOperationFiringBuildWorkerExecutor.java:43)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:210)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$CallableBuildOperationWorker.execute(DefaultBuildOperationRunner.java:205)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:67)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner$2.execute(DefaultBuildOperationRunner.java:60)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:167)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.execute(DefaultBuildOperationRunner.java:60)
+	at org.gradle.internal.operations.DefaultBuildOperationRunner.call(DefaultBuildOperationRunner.java:54)
+	at org.gradle.execution.BuildOperationFiringBuildWorkerExecutor.execute(BuildOperationFiringBuildWorkerExecutor.java:40)
+	at org.gradle.internal.build.DefaultBuildLifecycleController.lambda$executeTasks$11(DefaultBuildLifecycleController.java:323)
+	at org.gradle.internal.model.StateTransitionController.doTransition(StateTransitionController.java:304)
+	at org.gradle.internal.model.StateTransitionController.lambda$tryTransition$9(StateTransitionController.java:215)
+	at org.gradle.internal.work.DefaultSynchronizer.withLock(DefaultSynchronizer.java:45)
+	at org.gradle.internal.model.StateTransitionController.tryTransition(StateTransitionController.java:215)
+	at org.gradle.internal.build.DefaultBuildLifecycleController.executeTasks(DefaultBuildLifecycleController.java:314)
+	at org.gradle.internal.build.DefaultBuildWorkGraphController$DefaultBuildWorkGraph.runWork(DefaultBuildWorkGraphController.java:220)
+	at org.gradle.internal.work.DefaultWorkerLeaseService.lambda$withLocksAcquired$0(DefaultWorkerLeaseService.java:275)
+	at org.gradle.internal.work.ResourceLockStatistics$1.measure(ResourceLockStatistics.java:43)
+	at org.gradle.internal.work.DefaultWorkerLeaseService.withLocksAcquired(DefaultWorkerLeaseService.java:273)
+	at org.gradle.internal.work.DefaultWorkerLeaseService.withLocks(DefaultWorkerLeaseService.java:265)
+	at org.gradle.internal.work.DefaultWorkerLeaseService.runAsWorkerThread(DefaultWorkerLeaseService.java:128)
+	at org.gradle.composite.internal.DefaultBuildController.doRun(DefaultBuildController.java:182)
+	at org.gradle.composite.internal.DefaultBuildController.access$000(DefaultBuildController.java:50)
+	at org.gradle.composite.internal.DefaultBuildController$BuildOpRunnable.lambda$run$0(DefaultBuildController.java:199)
+	at org.gradle.internal.operations.CurrentBuildOperationRef.with(CurrentBuildOperationRef.java:84)
+	at org.gradle.composite.internal.DefaultBuildController$BuildOpRunnable.run(DefaultBuildController.java:199)
 	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
 	at org.gradle.internal.concurrent.AbstractManagedExecutor$1.run(AbstractManagedExecutor.java:47)
 Caused by: org.gradle.api.internal.tasks.compile.CompilationFailedException: Compilation failed; see the compiler output below.
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/render/TheaterRenderer.java:13: error: package org.vivecraft.api.client.data does not exist
-import org.vivecraft.api.client.data.RenderPass;
-                                    ^
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/render/TheaterRenderer.java:368: error: cannot find symbol
-    private static void restorePreviousRenderPass(WorldRenderPass previousWorldPass, RenderPass previousPass) {
-                                                                                     ^
-  symbol:   class RenderPass
-  location: class TheaterRenderer
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/render/TheaterRenderer.java:388: error: cannot find symbol
-    private static RenderPass getCompatibleRenderPass(WorldRenderPass previousWorldPass, RenderPass previousPass) {
-                                                                                         ^
-  symbol:   class RenderPass
-  location: class TheaterRenderer
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/render/TheaterRenderer.java:388: error: cannot find symbol
-    private static RenderPass getCompatibleRenderPass(WorldRenderPass previousWorldPass, RenderPass previousPass) {
-                   ^
-  symbol:   class RenderPass
-  location: class TheaterRenderer
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/mixin/client/VREffectsHelperMixin.java:3: error: package com.mojang.blaze3d.textures does not exist
-import com.mojang.blaze3d.textures.GpuTexture;
-                                  ^
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/mixin/client/VREffectsHelperMixin.java:16: error: package org.vivecraft.client_vr.render.rendertypes does not exist
-import org.vivecraft.client_vr.render.rendertypes.VRRenderTypes;
-                                                 ^
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/mixin/client/VREffectsHelperMixin.java:83: error: cannot find symbol
-    private static RenderLayer vtm$opaqueTheaterPanel(GpuTexture texture, boolean depthAlways) {
-                                                      ^
-  symbol:   class GpuTexture
-  location: class VREffectsHelperMixin
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/mixin/client/GuiMainVRSettingsMixin.java:11: error: package org.vivecraft.client.gui.framework.widgets does not exist
-import org.vivecraft.client.gui.framework.widgets.GuiVROption;
-                                                 ^
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/mixin/client/GuiMainVRSettingsMixin.java:24: error: cannot find symbol
-        GuiVROption button,
-        ^
-  symbol:   class GuiVROption
-  location: class GuiMainVRSettingsMixin
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/mixin/client/GuiMainVRSettingsMixin.java:52: error: cannot find symbol
-        GuiVROption button,
-        ^
-  symbol:   class GuiVROption
-  location: class GuiMainVRSettingsMixin
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/mixin/client/GuiMainVRSettingsMixin.java:64: error: cannot find symbol
-        GuiVROption button,
-        ^
-  symbol:   class GuiVROption
-  location: class GuiMainVRSettingsMixin
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/mixin/client/PlayerRendererTheaterMixin.java:7: error: package net.minecraft.client.render.entity.state does not exist
-import net.minecraft.client.render.entity.state.PlayerEntityRenderState;
-                                               ^
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/mixin/client/PlayerRendererTheaterMixin.java:12: error: cannot find symbol
-import org.vivecraft.client.extensions.EntityRenderStateExtension;
-                                      ^
-  symbol:   class EntityRenderStateExtension
-  location: package org.vivecraft.client.extensions
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/mixin/client/PlayerRendererTheaterMixin.java:19: error: cannot find symbol
-        PlayerEntityRenderState state,
-        ^
-  symbol:   class PlayerEntityRenderState
-  location: class PlayerRendererTheaterMixin
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/mixin/client/GuiVROptionsBaseAccessor.java:5: error: package org.vivecraft.client.gui.framework.screens does not exist
-import org.vivecraft.client.gui.framework.screens.GuiVROptionsBase;
-                                                 ^
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/mixin/client/GuiVROptionsBaseAccessor.java:7: error: cannot find symbol
-@Mixin(GuiVROptionsBase.class)
-       ^
-  symbol: class GuiVROptionsBase
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/render/TheaterRenderer.java:97: error: lastYaw has private access in ClientPlayerEntity
-        MC.player.lastYaw = theaterViewYaw;
-                 ^
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/render/TheaterRenderer.java:172: error: method resize in class Framebuffer cannot be applied to given types;
-        theaterFramebuffer.resize(THEATER_WIDTH, THEATER_HEIGHT);
-                          ^
-  required: int,int,boolean
-  found:    int,int
-  reason: actual and formal argument lists differ in length
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/render/TheaterRenderer.java:173: error: cannot find symbol
-        RenderSystem.getDevice().createCommandEncoder().clearColorAndDepthTextures(
-                    ^
-  symbol:   method getDevice()
-  location: class RenderSystem
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/render/TheaterRenderer.java:199: error: method resize in class Framebuffer cannot be applied to given types;
-            theaterFramebuffer.resize(THEATER_WIDTH, THEATER_HEIGHT);
-                              ^
-  required: int,int,boolean
-  found:    int,int
-  reason: actual and formal argument lists differ in length
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/render/TheaterRenderer.java:200: error: cannot find symbol
-            RenderSystem.getDevice().createCommandEncoder().clearColorAndDepthTextures(
-                        ^
-  symbol:   method getDevice()
-  location: class RenderSystem
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/render/TheaterRenderer.java:212: error: cannot find symbol
-                renderTickCounter.getTickProgress(true)
-                                 ^
-  symbol:   method getTickProgress(boolean)
-  location: variable renderTickCounter of type RenderTickCounter
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/render/TheaterRenderer.java:215: error: cannot find symbol
-                renderTickCounter.getTickProgress(false)
-                                 ^
-  symbol:   method getTickProgress(boolean)
-  location: variable renderTickCounter of type RenderTickCounter
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/render/TheaterRenderer.java:287: error: lastYaw has private access in ClientPlayerEntity
-        previousPlayerLastYaw = MC.player.lastYaw;
-                                         ^
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/render/TheaterRenderer.java:288: error: lastPitch has private access in ClientPlayerEntity
-        previousPlayerLastPitch = MC.player.lastPitch;
-                                           ^
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/render/TheaterRenderer.java:302: error: lastPitch has private access in ClientPlayerEntity
-        float renderLastPitch = MC.player.lastPitch;
-                                         ^
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/render/TheaterRenderer.java:308: error: lastYaw has private access in ClientPlayerEntity
-        MC.player.lastYaw = renderLastYaw;
-                 ^
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/render/TheaterRenderer.java:309: error: lastPitch has private access in ClientPlayerEntity
-        MC.player.lastPitch = renderLastPitch;
-                 ^
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/render/TheaterRenderer.java:329: error: lastYaw has private access in ClientPlayerEntity
-        MC.player.lastYaw = previousPlayerLastYaw;
-                 ^
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/render/TheaterRenderer.java:330: error: lastPitch has private access in ClientPlayerEntity
-        MC.player.lastPitch = previousPlayerLastPitch;
-                 ^
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/render/TheaterRenderer.java:343: error: incompatible types: String cannot be converted to int
-            theaterFramebuffer = new SimpleFramebuffer("Theater", THEATER_WIDTH, THEATER_HEIGHT, true);
-                                                       ^
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/render/TheaterRenderer.java:375: error: cannot find symbol
-        if (previousPass == RenderPass.GUI) {
-                            ^
-  symbol:   variable RenderPass
-  location: class TheaterRenderer
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/render/TheaterRenderer.java:380: error: cannot find symbol
-        if (previousPass == RenderPass.MIRROR) {
-                            ^
-  symbol:   variable RenderPass
-  location: class TheaterRenderer
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/render/TheaterRenderer.java:394: error: cannot find symbol
-            return RenderPass.LEFT;
-                   ^
-  symbol:   variable RenderPass
-  location: class TheaterRenderer
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/render/TheaterRenderer.java:397: error: cannot find symbol
-            return RenderPass.CENTER;
-                   ^
-  symbol:   variable RenderPass
-  location: class TheaterRenderer
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/render/TheaterRenderer.java:400: error: cannot find symbol
-            return RenderPass.THIRD;
-                   ^
-  symbol:   variable RenderPass
-  location: class TheaterRenderer
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/render/TheaterRenderer.java:403: error: cannot find symbol
-            return RenderPass.SCOPEL;
-                   ^
-  symbol:   variable RenderPass
-  location: class TheaterRenderer
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/render/TheaterRenderer.java:406: error: cannot find symbol
-            return RenderPass.SCOPER;
-                   ^
-  symbol:   variable RenderPass
-  location: class TheaterRenderer
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/render/TheaterRenderer.java:409: error: cannot find symbol
-            return RenderPass.CAMERA;
-                   ^
-  symbol:   variable RenderPass
-  location: class TheaterRenderer
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/render/TheaterRenderer.java:412: error: cannot find symbol
+/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/render/TheaterRenderer.java:395: error: cannot find symbol
         return RenderPass.VANILLA;
-               ^
-  symbol:   variable RenderPass
-  location: class TheaterRenderer
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/environment/TheaterEnvironmentManager.java:349: error: cannot find symbol
-            RenderSystem.getDevice().createCommandEncoder().clearColorAndDepthTextures(
-                        ^
-  symbol:   method getDevice()
-  location: class RenderSystem
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/client/environment/TheaterEnvironmentManager.java:375: error: cannot find symbol
-                    VREffectsHelper.renderMenuEnvironment();
-                                   ^
-  symbol:   method renderMenuEnvironment()
-  location: class VREffectsHelper
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/mixin/client/VREffectsHelperMixin.java:51: error: cannot find symbol
-            VREffectsHelper.renderMenuEnvironment();
-                           ^
-  symbol:   method renderMenuEnvironment()
-  location: class VREffectsHelper
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/mixin/client/VREffectsHelperMixin.java:63: error: cannot find symbol
-                ShaderHelper.blit(guiFramebuffer, TheaterRenderer.getTheaterFramebuffer(), true);
-                            ^
-  symbol:   method blit(Framebuffer,Framebuffer,boolean)
-  location: class ShaderHelper
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/mixin/client/VREffectsHelperMixin.java:85: error: cannot find symbol
-            return VRRenderTypes.entitySolidNoCardinalLight(texture);
-                   ^
-  symbol:   variable VRRenderTypes
-  location: class VREffectsHelperMixin
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/mixin/client/VREffectsHelperMixin.java:87: error: cannot find symbol
-        return VRRenderTypes.entityTranslucentNoCardinalLight(texture, depthAlways);
-               ^
-  symbol:   variable VRRenderTypes
-  location: class VREffectsHelperMixin
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/mixin/client/PlayerRendererTheaterMixin.java:24: error: cannot find symbol
-            ((EntityRenderStateExtension) state).vivecraft$setRotInfo(null);
-              ^
-  symbol:   class EntityRenderStateExtension
-  location: class PlayerRendererTheaterMixin
-/home/runner/work/Vivecraft_114/Vivecraft_114/theater/src/client/java/dev/justfeli/vtm/mixin/client/MinecraftClientRenderMixin.java:24: error: cannot find symbol
-            RenderSystem.getDevice().createCommandEncoder().clearColorAndDepthTextures(
-                        ^
-  symbol:   method getDevice()
-  location: class RenderSystem
-Note: Some messages have been simplified; recompile with -Xdiags:verbose to get full output
-48 errors
+                         ^
+  symbol:   variable VANILLA
+  location: class RenderPass
+1 error
 	at org.gradle.api.internal.tasks.compile.JdkJavaCompiler.execute(JdkJavaCompiler.java:89)
 	at org.gradle.api.internal.tasks.compile.JdkJavaCompiler.execute(JdkJavaCompiler.java:50)
 	at org.gradle.api.internal.tasks.compile.NormalizingJavaCompiler.delegateAndHandleErrors(NormalizingJavaCompiler.java:98)
@@ -840,7 +250,7 @@ Note: Some messages have been simplified; recompile with -Xdiags:verbose to get 
 	at org.gradle.internal.execution.steps.IdentifyStep.execute(IdentifyStep.java:38)
 	at org.gradle.internal.execution.impl.DefaultExecutionEngine$1.execute(DefaultExecutionEngine.java:68)
 	at org.gradle.api.internal.tasks.execution.ExecuteActionsTaskExecuter.executeIfValid(ExecuteActionsTaskExecuter.java:132)
-	... 30 more
+	... 61 more
 
 
 Deprecated Gradle features were used in this build, making it incompatible with Gradle 10.
@@ -849,5 +259,5 @@ You can use '--warning-mode all' to show the individual deprecation warnings and
 
 For more on this, please refer to https://docs.gradle.org/9.4.0/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
 
-BUILD FAILED in 1m 5s
+BUILD FAILED in 56s
 4 actionable tasks: 4 executed
