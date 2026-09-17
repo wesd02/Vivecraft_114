@@ -1,2 +1,2 @@
-QuestHub Android dependency courier trigger. No private QuestHub source is included here.
-Build-tools 34 retry: 2026-08-24T20:57Z
+QuestCraft Theater public compile courier trigger. No private Questbridge source is included here.
+2026-09-17
