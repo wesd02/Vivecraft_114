@@ -4,6 +4,11 @@ on:
   push:
     branches:
       - ci/questcraft-theater-port
+  pull_request:
+    branches:
+      - master
+    paths:
+      - '.github/workflows/questcraft-theater-port.yml'
   workflow_dispatch:
 
 permissions:
